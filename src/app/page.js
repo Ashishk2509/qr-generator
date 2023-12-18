@@ -2,30 +2,28 @@
 import { useState } from "react";
 import QRCode from "react-qr-code";
 import html2canvas from 'html2canvas';
+import { Montserrat } from "next/font/google";
+
+const monsterrat = Montserrat({subsets:["latin"], weight:"700"})
 
 export default function Home() {
-  const [title, setTitle] = useState("");
   const [qr, setQr] = useState("");
 
-  function handelTitle(event) {
-    setTitle(event.target.value);
-  }
   function handelQR(event) {
     setQr(event.target.value);
   }
   const download = async () => {
-    if (title != "" && qr != "") {
+    if (qr != "") {
       try {
-        const canvas = await html2canvas(document.getElementById('content'));
+        const canvas = await html2canvas(document.getElementById('content'), {scale : 4, backgroundColor: null});
         const imageData = canvas.toDataURL('image/png');
         const link = document.createElement('a');
         link.href = imageData;
-        link.download = title + '.png';
+        link.download = 'QR_code.png';
         link.click();
-        setTitle("");
         setQr("");
       } catch (error) {
-        console.error('Error capturing image:', error);
+        console.log('Error capturing image:', error);
       }
     } else {
       alert("Please Provide Link and Title")
@@ -34,38 +32,27 @@ export default function Home() {
   };
 
   return (
-    <>
-      <div className="lg:flex max-w-xl mx-auto h-full">
-        <div id="content" className="mx-auto flex flex-col items-center w-64 py-10 my-10 shadow-2xl bg-blue-900">
+    <main className=" bg-red-300 h-screen flex flex-col justify-center items-center">
+
+        <div id="content" className="flex flex-col justify-center items-center rounded-xl bg-purple-950 w-4/5 h-3/5 py-10 lg:w-fit lg:px-5 small">
           <QRCode
-            className="w-3/4"
+            className="w-fit"
             value={qr}
             size={256}
             level="H"
-            bgColor="rgba(0,0,0,0)"
-            fgColor="rgb(209, 213, 219)"
+            bgColor="transparent"
+            fgColor="rgb(243, 248, 255)"
           />
-          <hr className=" w-3/4 h-1 mx-auto mb-3 border-0 rounded bg-gray-300" />
-          <div className="text-center text-2xl font-sans font-semibold text-gray-300 h-8">
-            {title}
+          <hr className=" border-neutral-100 my-10 w-3/4 mx-auto"/>
+          <div className={monsterrat.className + " text-center text-3xl text-white"} contentEditable>
+            TITLE
           </div>
         </div>
 
-        <div className="lg:pt-40 mx-auto w-3/4">
-          <div className="flex items-center border-b border-teal-500 py-2 w-3/4 mx-auto">
+        <div className="mt-5 w-4/5 lg:w-fit">
+          <div className="">
             <input
-              className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-              type="text"
-              placeholder="QR-Title"
-              aria-label="Title"
-              onChange={handelTitle}
-              value={title}
-            />
-          </div>
-
-          <div className="flex items-center border-b border-teal-500 py-2 w-3/4 mx-auto">
-            <input
-              className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+              className=" w-full text-center placeholder:text-gray-700 text-white placeholder:font-bold text-xl rounded-md bg-blue-400 p-2"
               type="text"
               placeholder="QR-Link"
               aria-label="Link"
@@ -73,13 +60,13 @@ export default function Home() {
               value={qr}
             />
           </div>
-          <div className="w-3/4 mx-auto">
-            <button onClick={download} className="w-full bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 my-10 px-4 border border-blue-500 hover:border-transparent rounded">
+          <div className=" w-full text-center p-2 bg-green-600 rounded-md my-2 text-white font-bold">
+            <button onClick={download} className="">
               DOWNLOAD
             </button>
           </div>
         </div>
-      </div>
-    </>
+
+    </main>
   );
 }
