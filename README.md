@@ -12,13 +12,25 @@ Welcome to the QR Code Generator built with React-Qr-code and Next.js! This web 
 # Getting Started
 To run the application locally, follow these simple steps:
 
-1. Clone the repository: git clone https://github.com/Ashishk2509/qr-generator.git
-2. Navigate to the project directory: cd qr-generator
-3. Install dependencies: npm install
-4. Start the development server: npm run dev
+1. Clone the repository:
+```
+ git clone https://github.com/Ashishk2509/qr-generator.git
+```
+2. Navigate to the project directory: 
+```
+cd qr-generator
+```
+3. Install dependencies: 
+```
+npm install
+```
+4. Start the development server: 
+```
+npm run dev
+```
  
-Open your browser and visit http://localhost:3000 to see the QR Code Generator in action!
-
+5. Open your browser and visit http://localhost:3000 to see the QR Code Generator in action!
+   
 # Tech Stack
 * React-Qr-code: The core library for generating QR codes in React applications.
 * Next.js: The React framework for building fast and scalable web applications.
