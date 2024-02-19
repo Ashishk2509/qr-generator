@@ -30,6 +30,8 @@ npm run dev
 ```
  
 5. Open your browser and visit http://localhost:3000 to see the QR Code Generator in action!
+
+#### Check https://qr-generator-gold.vercel.app/ for demo.
    
 # Tech Stack
 * React-Qr-code: The core library for generating QR codes in React applications.
