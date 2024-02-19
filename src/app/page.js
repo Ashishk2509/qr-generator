@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <main className=" bg-red-300 h-screen flex flex-col justify-center items-center">
 
-        <div id="content" className="flex flex-col justify-center items-center rounded-xl bg-purple-950 w-4/5 h-3/5 py-10 lg:w-fit lg:px-5 small">
+        <div id="content" className="flex flex-col justify-center items-center rounded-xl bg-purple-950 h-3/5 py-10 lg:w-fit px-5 small">
           <QRCode
             className="w-fit"
             value={qr}
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-5 w-4/5 lg:w-fit">
+        <div className="mt-5 w-fit">
           <div className="">
             <input
               className=" w-full text-center placeholder:text-gray-700 text-white placeholder:font-bold text-xl rounded-md bg-blue-400 p-2"
