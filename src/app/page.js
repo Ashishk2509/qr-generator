@@ -32,7 +32,7 @@ export default function Home() {
   };
 
   return (
-    <main className=" bg-red-300 h-screen flex flex-col justify-center items-center">
+    <main className=" bg-cyan-300 h-screen flex flex-col justify-center items-center">
 
         <div id="content" className="flex flex-col justify-center items-center rounded-xl bg-purple-950 h-3/5 py-10 lg:w-fit px-5 small">
           <QRCode
